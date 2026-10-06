@@ -4,348 +4,176 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aryan Mane — Resume</title>
-  <meta name="description" content="Resume of Aryan Mane — Full Stack Developer working across Go, Kubernetes, AWS, and distributed systems.">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="Aryan Mane — Resume">
-  <meta property="og:description" content="Full Stack Developer working across Go, Kubernetes, AWS, and distributed systems.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://resume.aryanmane.xyz">
-  
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fabd2f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z'/><polyline points='14 2 14 8 20 8'/></svg>">
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-
   <style>
-    :root {
-      --background: #1d2021;
-      --foreground: #ebdbb2;
-      --muted: #a89984;
-      --border: #3c3836;
-      --surface: #282828;
-      --surface-hover: #32302f;
-      --accent: #fabd2f;
-      --accent-hover: #fe8019;
-      --accent-green: #b8bb26;
-      --accent-cyan: #8ec07c;
-      --selection-bg: #665c54;
-      --selection-fg: #ebdbb2;
-      --font-mono: 'JetBrains Mono', monospace;
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    ::selection {
-      background: var(--selection-bg);
-      color: var(--selection-fg);
-    }
-
     body {
-      background-color: var(--background);
-      color: var(--foreground);
-      font-family: var(--font-mono);
+      background-color: #525659;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
-      -webkit-font-smoothing: antialiased;
     }
 
-    /* Top Navigation Bar */
-    header {
-      background-color: var(--surface);
-      border-bottom: 1px solid var(--border);
-      height: 54px;
+    /* Top bar */
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #323639;
+      color: #fff;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 16px;
-      z-index: 20;
-      flex-shrink: 0;
+      padding: 10px 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
 
-    .brand-section {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 13px;
+    .title {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
     }
 
-    .back-link {
+    .download-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      color: var(--muted);
+      gap: 8px;
+      background: #0066cc;
+      color: #ffffff;
       text-decoration: none;
-      transition: color 0.15s ease;
-      font-weight: 500;
-    }
-
-    .back-link:hover {
-      color: var(--accent);
-    }
-
-    .crumb-divider {
-      color: var(--border);
-      user-select: none;
-    }
-
-    .file-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--foreground);
-      background: var(--background);
-      border: 1px solid var(--border);
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-size: 12px;
-      font-weight: 500;
-    }
-
-    .file-badge svg {
-      width: 13px;
-      height: 13px;
-      color: var(--accent);
-    }
-
-    .actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .action-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-size: 13px;
-      font-family: var(--font-mono);
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.15s ease;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--muted);
-      border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-      background: var(--surface-hover);
-      color: var(--foreground);
-      border-color: var(--muted);
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #1d2021;
-      border: 1px solid var(--accent);
+      font-size: 14px;
       font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: background 0.15s ease;
     }
 
-    .btn-primary:hover {
-      background: var(--accent-hover);
-      border-color: var(--accent-hover);
-      color: #1d2021;
+    .download-btn:hover {
+      background: #0052a3;
     }
 
-    .btn-primary svg,
-    .btn-secondary svg {
-      width: 14px;
-      height: 14px;
+    .download-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
       stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
-    /* Main PDF Viewer Container */
-    main {
+    /* Resume container */
+    .viewer-container {
       flex: 1;
-      width: 100%;
-      height: calc(100vh - 54px);
-      position: relative;
-      background: #141617;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px;
+      overflow-y: auto;
     }
 
-    .pdf-viewer {
+    .page-wrapper {
+      max-width: 900px;
       width: 100%;
-      height: 100%;
-      border: none;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    canvas {
+      width: 100%;
+      height: auto;
+      max-width: 900px;
+      background: #ffffff;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+      border-radius: 2px;
       display: block;
     }
 
-    /* Fallback Container for mobile or browsers without embedded PDF support */
-    .fallback-card {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      text-align: center;
-      background: var(--background);
-      z-index: 1;
-    }
-
-    .fallback-box {
-      max-width: 440px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 32px 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .fallback-icon {
-      width: 48px;
-      height: 48px;
-      color: var(--accent);
-      padding: 10px;
-      background: var(--background);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-    }
-
-    .fallback-title {
-      font-size: 17px;
-      font-weight: 600;
-      color: var(--foreground);
-    }
-
-    .fallback-desc {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .fallback-actions {
-      display: flex;
-      gap: 10px;
-      width: 100%;
-      margin-top: 8px;
-    }
-
-    .fallback-actions .action-btn {
-      flex: 1;
-      justify-content: center;
-      padding: 9px 12px;
+    .loading {
+      color: #e0e0e0;
+      font-size: 15px;
+      margin-top: 40px;
     }
 
     @media (max-width: 600px) {
-      header {
-        padding: 0 12px;
+      .toolbar {
+        padding: 8px 12px;
       }
-      .crumb-divider,
-      .file-badge {
-        display: none;
+      .title {
+        font-size: 14px;
       }
-      .btn-secondary span {
-        display: none;
+      .download-btn {
+        padding: 6px 12px;
+        font-size: 13px;
       }
-      .btn-secondary {
-        padding: 6px 8px;
-      }
-      .btn-primary {
-        padding: 6px 10px;
+      .viewer-container {
+        padding: 12px 8px;
       }
     }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="brand-section">
-      <a href="https://aryanmane.xyz" class="back-link" title="Back to Portfolio">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-        <span>aryanmane.xyz</span>
-      </a>
-      <span class="crumb-divider">/</span>
-      <div class="file-badge">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
-          <polyline points="14 2 14 8 20 8"/>
-        </svg>
-        <span>AryanMane.pdf</span>
-      </div>
-    </div>
-
-    <div class="actions">
-      <!-- Open in new tab -->
-      <a href="/AryanMane.pdf" target="_blank" rel="noopener noreferrer" class="action-btn btn-secondary" title="Open PDF in new tab">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-          <polyline points="15 3 21 3 21 9"></polyline>
-          <line x1="10" y1="14" x2="21" y2="3"></line>
-        </svg>
-        <span>Raw</span>
-      </a>
-
-      <!-- Download Button -->
-      <a href="/AryanMane.pdf" download="Aryan_Mane_Resume.pdf" class="action-btn btn-primary" title="Download Resume (PDF)">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-          <polyline points="7 10 12 15 17 10"></polyline>
-          <line x1="12" y1="15" x2="12" y2="3"></line>
-        </svg>
-        <span>Download</span>
-      </a>
-    </div>
+  <header class="toolbar">
+    <div class="title">Aryan Mane — Resume</div>
+    <a href="/AryanMane.pdf" download="Aryan_Mane_Resume.pdf" class="download-btn">
+      <svg viewBox="0 0 24 24">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+      <span>Download PDF</span>
+    </a>
   </header>
 
-  <!-- PDF Viewport -->
-  <main>
-    <object
-      data="/AryanMane.pdf#toolbar=1&navpanes=0&scrollbar=1"
-      type="application/pdf"
-      class="pdf-viewer"
-    >
-      <iframe
-        src="/AryanMane.pdf"
-        class="pdf-viewer"
-        title="Aryan Mane Resume"
-      >
-        <!-- Mobile / Fallback Card -->
-        <div class="fallback-card">
-          <div class="fallback-box">
-            <svg class="fallback-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
-              <polyline points="14 2 14 8 20 8"/>
-            </svg>
-            <h2 class="fallback-title">Aryan Mane — Resume</h2>
-            <p class="fallback-desc">
-              Your browser doesn't support embedded PDF preview. You can view the full PDF directly or download a copy.
-            </p>
-            <div class="fallback-actions">
-              <a href="/AryanMane.pdf" target="_blank" rel="noopener noreferrer" class="action-btn btn-secondary">
-                View PDF
-              </a>
-              <a href="/AryanMane.pdf" download="Aryan_Mane_Resume.pdf" class="action-btn btn-primary">
-                Download PDF
-              </a>
-            </div>
-          </div>
-        </div>
-      </iframe>
-    </object>
+  <main class="viewer-container" id="viewer">
+    <div id="loading" class="loading">Loading resume...</div>
   </main>
 
+  <script>
+    const url = '/AryanMane.pdf';
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    const viewer = document.getElementById('viewer');
+    const loading = document.getElementById('loading');
+
+    pdfjsLib.getDocument(url).promise.then(function(pdf) {
+      loading.remove();
+      for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+        pdf.getPage(pageNum).then(function(page) {
+          const wrapper = document.createElement('div');
+          wrapper.className = 'page-wrapper';
+
+          const canvas = document.createElement('canvas');
+          wrapper.appendChild(canvas);
+          viewer.appendChild(wrapper);
+
+          const context = canvas.getContext('2d');
+          // Scale by 2x for sharp rendering on retina / high-DPI screens
+          const pixelRatio = Math.max(window.devicePixelRatio || 1, 2);
+          const viewport = page.getViewport({ scale: pixelRatio });
+
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+
+          page.render({
+            canvasContext: context,
+            viewport: viewport
+          });
+        });
+      }
+    }).catch(function(err) {
+      console.error('Error rendering PDF with PDF.js:', err);
+      // Fallback: render pre-generated high-res image
+      loading.innerHTML = '<img src="/resume-page-1.png" alt="Resume" style="width:100%;max-width:900px;box-shadow:0 4px 24px rgba(0,0,0,0.35);border-radius:2px;">';
+    });
+  </script>
 </body>
 </html>
